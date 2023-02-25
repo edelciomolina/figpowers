@@ -1,0 +1,38 @@
+[
+    {
+        "en": "Example",
+        "pt": "Exemplo",
+        "fr": "Exemple",
+        "it": "Esempio",
+        "es": "Ejemplo",
+        "de": "Beispiel"
+    },
+    {
+        "en": "Select a frame or object in a frame and use the circular node to drag a connection to another frame.",
+        "pt": "Selecione um quadro ou objeto em um quadro e use o nó circular para arrastar uma conexão para outro quadro"
+    },
+    {
+        "en": "Background",
+        "pt": "Plano de Fundo"
+    },
+    {
+        "en": "Device",
+        "pt": "Dispositivo"
+    },
+    {
+        "en": "Present",
+        "pt": "Apresentar"
+    },
+    {
+        "en": "Duplicate",
+        "pt": "Duplicar"
+    },
+    {
+        "en": "Creating a connection",
+        "pt": "Criando uma conexão"
+    },
+    {
+        "en": "Running your prototype",
+        "pt": "Executando seu protótipo"
+    }
+]

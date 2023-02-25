@@ -1,0 +1,57 @@
+{
+    "name": "Figma Powers",
+    "manifest_version": 3,
+    "version": "1.0.0",
+    "description": "A Figma Chrome Extensions for translation",
+    "options_page": "options.html",
+    "permissions": [
+        "storage",
+        "tabs",
+        "activeTab",
+        "scripting",
+        "declarativeContent",
+        "notifications"
+    ],
+    "action": {
+        "default_icon": {
+            "16": "assets/ext-icon-16.png",
+            "24": "assets/ext-icon-24.png",
+            "32": "assets/ext-icon-32.png",
+            "48": "assets/ext-icon-48.png",
+            "96": "assets/ext-icon-96.png",
+            "128": "assets/ext-icon-128.png"
+        },
+        "default_title": "Figma Powers",
+        "default_popup": "popup.html"
+    },
+    "background": {
+        "service_worker": "background.js"
+    },
+    "host_permissions": [
+        "https://figma.com/",
+        "https://www.figma.com/"
+    ],
+    "content_scripts": [
+        {
+            "matches": [
+                "https://www.figma.com/*",
+                "https://figma.com/*"
+            ],
+            "js": [
+                "content.js"
+            ]
+        }
+    ],
+    "commands": {
+        "_execute_action": {
+            "suggested_key": {
+                "default": "Alt+I",
+                "windows": "Alt+I",
+                "mac": "Alt+I",
+                "chromeos": "Alt+I",
+                "linux": "Alt+I"
+            },
+            "description": "Toggle feature foo"
+        }
+    }
+}
