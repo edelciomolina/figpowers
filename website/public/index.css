@@ -1,0 +1,10 @@
+body {
+    text-align: center;
+}
+
+img {
+    height: 200px;
+    position: absolute;
+    top: calc(50% - 100px);
+    left: calc(50% - 100px);
+}
