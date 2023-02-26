@@ -42,7 +42,7 @@ const UserLanguageFrom = () => {
 const UserLanguageTo = () => {
 
   //TODO coletar isso via chrome.storage.sync.get
-  let savedUserLanguage = null
+  let savedUserLanguage = 'pt'
 
   //INFO caso ainda sem linguagem definida, pega do navegador
   if (!savedUserLanguage) {
@@ -61,23 +61,41 @@ const FindTranslation = (jsonData, originLanguage, targetLanguage, valuesToSearc
   }
 
   for (let i = 0; i < jsonData.length; i++) {
-    const obj = jsonData[i];
-    if (Object.prototype.hasOwnProperty.call(obj, targetLanguage)) {
-      for (let j = 0; j < valuesToSearch.length; j++) {
-        const val = valuesToSearch[j];
+    for (let j = 0; j < valuesToSearch.length; j++) {
 
-        if (val &&
-          Object.prototype.hasOwnProperty.call(obj, targetLanguage) &&
-          obj[originLanguage] === val) {
+      const obj = jsonData[i];
+      const val = valuesToSearch[j];
+      const exists = Object.prototype.hasOwnProperty.call(obj, targetLanguage)
+      const confirmed = val && obj[originLanguage] === val
 
-          return { state: true, origin: val, translation: obj[targetLanguage] };
+      if (exists && confirmed) {
 
-        }
+        return { state: true, origin: val, translation: obj[targetLanguage] };
+ 
       }
     }
   }
 
   return { state: false };
+
+}
+
+const Translate = (request, sender, sendResponse) => {
+
+  const valuesToSearch = [request.data.text, request.data.tooltip]
+  const result = FindTranslation(jsonLocales, UserLanguageFrom(), UserLanguageTo(), valuesToSearch)
+  return result;
+
+}
+
+const Test_Firebase = (request) => {
+
+  // exemplo de consulta ao firestore em background.js
+  db.collection('usuarios').get().then((querySnapshot) => {
+    querySnapshot.forEach((doc) => {
+      console.log(doc.id, " => ", doc.data());
+    });
+  });
 
 
 }
@@ -86,19 +104,8 @@ const FindTranslation = (jsonData, originLanguage, targetLanguage, valuesToSearc
 chrome.runtime.onMessage.addListener(
   (request, sender, sendResponse) => {
 
-
-    switch (request.type) {
-
-      case 'translate': {
-
-        const valuesToSearch = [request.data.text, request.data.tooltip]
-        const result = FindTranslation(jsonLocales, UserLanguageFrom(), UserLanguageTo(), valuesToSearch)
-        sendResponse(result);
-        break;
-
-      }
-
-    }
+    if (request.type === 'translate') sendResponse(Translate(request, sender, sendResponse))
+    if (request.type === 'users') sendResponse(Test_Firebase(request, sender, sendResponse))
 
   }
 );
