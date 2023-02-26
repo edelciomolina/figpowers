@@ -6,6 +6,8 @@ chrome.runtime.sendMessage({
     type: 'popup-event'
 }, (response) => {
  
+    //TODO https://chat.openai.com/chat/690d9c80-f50e-4ad9-91b5-64be39509666
+    
     //fica solicitando retorno do backend
     // setInterval(() => {
  

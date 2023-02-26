@@ -11,7 +11,7 @@
         "scripting",
         "declarativeContent",
         "notifications"
-    ],
+    ],  
     "action": {
         "default_icon": {
             "16": "assets/ext-icon-16.png",
@@ -26,7 +26,7 @@
     },
     "background": {
         "service_worker": "background.js"
-    },
+    }, 
     "host_permissions": [
         "https://figma.com/",
         "https://www.figma.com/"

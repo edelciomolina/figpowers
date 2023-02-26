@@ -1,0 +1,35 @@
+# Ignore arquivos gerados automaticamente
+node_modules/
+dist/
+build/
+*.log
+
+# Ignore arquivos específicos do Firebase
+firebase.json
+firebase-debug.log*
+firebaseapp.com
+firebasestorage.googleapis.com
+.firestore-emulator
+
+# Ignore arquivos específicos do Chrome Extensions
+*.pem
+*.crx
+*.key
+*.p12
+*.jks
+*.der
+
+# Ignore arquivos de ambiente
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Ignore arquivos de configuração
+*.env.js
+*.env.config
+firebase-config.js
+firebase-config.json
+firebase-adminsdk.json
+chrome-extension-config.json

@@ -65,8 +65,8 @@ const translate = (elem) => {
         chrome.runtime.sendMessage({
             type: 'translate',
             data: { text, tooltip }
-        }, function (response) {
-
+        }, function (response) { 
+        
             if (response && response.state) {
 
                 if (response.state && tooltip == response.origin) {
@@ -90,7 +90,7 @@ const translate = (elem) => {
 }
 
 waitForElm('#react-page').then((container) => {
-
+ 
     const observer = new MutationObserver((mutationsList, observer) => {
         for (let mutation of mutationsList) {
             if (mutation.type === 'childList') {
