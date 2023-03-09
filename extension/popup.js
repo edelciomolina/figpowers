@@ -1,29 +1,42 @@
 
-let timeoutProcessing = null
+const AddLoginListeners = () => {
 
-//avisa o background que o popup foi aberto
-chrome.runtime.sendMessage({
-    type: 'popup-event'
-}, (response) => {
- 
-    //TODO https://chat.openai.com/chat/690d9c80-f50e-4ad9-91b5-64be39509666
-    
-    //fica solicitando retorno do backend
-    // setInterval(() => {
- 
-    //     chrome.runtime.sendMessage({
-    //         type: 'popup-read'
-    //     }, (response) => {
+    console.log('aqui')
+    const authButton = document.getElementById('figma-login');
+    authButton.addEventListener('click', FigmaLogin);
 
-    //         //assim que há retorno finaliza o interval
-    //         clearInterval(timeoutProcessing)
+}
 
-    //         //atualiza tela com as opções para escolha
-    //         document.getElementById("selected-text").innerText = response.status
+const FigmaLogin = () => {
 
-    //     });
+    chrome.runtime.sendMessage({
+        type: 'figma-login'
+    }, (response) => {
 
-    // }, 100)
- 
-});
+        console.log('figma?', response)
+
+    })
+
+}
+
+const PopupOpened = (callback) => {
+
+    chrome.runtime.sendMessage({
+        type: 'popup-opened'
+    }, (response) => {
+
+        callback()
+
+    });
+
+}
+
+
+PopupOpened(() => {
+
+    AddLoginListeners()
+
+})
+
+
 

@@ -2,21 +2,16 @@
 self.importScripts(
   'libs/firebase.js',
   'libs/figma.js',
-  'libs/translate.js',
-  'libs/auth.js',
+  'libs/translate.js'
 )
 
-let jsonLocales = ''
+Translate.LoadLocates()
+
+
 
 // chrome.tabs.query({active:true,currentWindow:true}, function(tabs){
 //   chrome.pageAction.show(tabs[0].id);
 // });
-
-
-
-/*TODO FIREBASE TESTING -- FIREBASE TESTING -- FIREBASE TESTING -- FIREBASE TESTING --  */
-/*TODO FIREBASE TESTING -- FIREBASE TESTING -- FIREBASE TESTING -- FIREBASE TESTING --  */
-
 
 chrome.tabs.onActivated.addListener((x) => {
   chrome.tabs.get(x.tabId, (tab) => {
@@ -32,11 +27,14 @@ chrome.tabs.onActivated.addListener((x) => {
 chrome.runtime.onMessage.addListener(
   (request, sender, sendResponse) => {
 
-    if (request.type === 'translate') sendResponse(Translate(request, sender, sendResponse))
-    if (request.type === 'users') sendResponse(Test_Firebase(request, sender, sendResponse))
+    if (request.type === 'popup-opened') sendResponse()
+    if (request.type === 'figma-login') sendResponse(Figma.Authenticate())
+    if (request.type === 'translate') sendResponse(Translate.Execute(request))
+    // if (request.type === 'users') sendResponse(Test_Firebase(request, sender, sendResponse))
 
   }
-);
+); 
+
 
 
 // const sendToServer = (command, content) => {
