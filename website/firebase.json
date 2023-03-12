@@ -1,4 +1,23 @@
 {
+  "functions": [
+    {
+      "source": "functions",
+      "codebase": "figpowers",
+      "ignore": [
+        "node_modules",
+        ".git",
+        "firebase-debug.log",
+        "firebase-debug.*.log"
+      ],
+      "predeploy": [
+        "npm --prefix \"$RESOURCE_DIR\" run lint",
+        "npm --prefix \"$RESOURCE_DIR\" run build"
+      ]
+    }
+  ],
+  "database": {
+    "rules": "database.rules.json"
+  },
   "hosting": {
     "public": "public",
     "ignore": [
@@ -8,8 +27,12 @@
     ],
     "rewrites": [
       {
-        "source": "/figmacb",
-        "destination": "/"
+        "source": "/privacy",
+        "destination": "/legal/privacy-policy.html"
+      },
+      {
+        "source": "/terms",
+        "destination": "/legal/terms-and-conditions.html"
       }
     ]
   }

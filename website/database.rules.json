@@ -1,0 +1,19 @@
+{
+  "rules": {
+    "users": {
+      "$uid": {
+        // Somente usuários autenticados podem ler ou gravar neste nó
+        ".read": "auth != null && auth.uid === $uid",
+        ".write": "auth != null && auth.uid === $uid",
+        
+        // O nó com o UID do usuário pode ser lido/gravado
+        ".indexOn": ["uid"]
+      }
+    },
+    "locales": {
+      // Somente usuários autenticados podem ler neste nó
+      ".read": "auth != null",
+      ".write": false
+    }
+  }
+}

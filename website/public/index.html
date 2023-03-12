@@ -1,74 +1,98 @@
 <!DOCTYPE html>
-<html>
+<html class="no-js" lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Figma Powers</title>
+    <meta charset="utf-8" />
+    <title>FigPowers</title>
+    <meta name="description" content="" />
+    <meta name="author" content="" />
 
-    <!-- update the version number as needed -->
-    <script defer src="/__/firebase/9.17.1/firebase-app-compat.js"></script>
-    <!-- include only the Firebase features as you need -->
-    <script defer src="/__/firebase/9.17.1/firebase-auth-compat.js"></script>
-    <script defer src="/__/firebase/9.17.1/firebase-database-compat.js"></script>
-    <script defer src="/__/firebase/9.17.1/firebase-firestore-compat.js"></script>
-    <script defer src="/__/firebase/9.17.1/firebase-functions-compat.js"></script>
-    <script defer src="/__/firebase/9.17.1/firebase-messaging-compat.js"></script>
-    <script defer src="/__/firebase/9.17.1/firebase-storage-compat.js"></script>
-    <script defer src="/__/firebase/9.17.1/firebase-analytics-compat.js"></script>
-    <script defer src="/__/firebase/9.17.1/firebase-remote-config-compat.js"></script>
-    <script defer src="/__/firebase/9.17.1/firebase-performance-compat.js"></script>
-    <!-- 
-      initialize the SDK after all desired features are loaded, set useEmulator to false
-      to avoid connecting the SDK to running emulators.
-    -->
-    <script defer src="/__/firebase/init.js?useEmulator=true"></script>
-    
-    <link rel="shortcut icon" href="assets/pow.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="index.css"> 
-      
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="stylesheet" href="index.css" />
+
+    <style type="text/css" media="screen">
+      .s-details .row {
+        max-width: var(--width-max);
+      }
+      .s-details .intro h1 {
+        margin-top: 0;
+      }
     </style>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+    <link rel="manifest" href="site.webmanifest" />
   </head>
-  <body>
-     
-   <img src="assets/pow.png"/>
 
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        const loadEl = document.querySelector('#load');
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-        // // The Firebase SDK is initialized and available here!
-        //
-        // firebase.auth().onAuthStateChanged(user => { });
-        // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
-        // firebase.firestore().doc('/foo/bar').get().then(() => { });
-        // firebase.functions().httpsCallable('yourFunction')().then(() => { });
-        // firebase.messaging().requestPermission().then(() => { });
-        // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
-        // firebase.analytics(); // call to activate
-        // firebase.analytics().logEvent('tutorial_completed');
-        // firebase.performance(); // call to activate
-        //
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+  <body id="top" class="ss-preload theme-static">
+    <section id="intro" class="s-intro">
+      <div class="s-intro__bg"></div>
 
-        try {
-          let app = firebase.app();
-          let features = [
-            'auth', 
-            'database', 
-            'firestore',
-            'functions',
-            'messaging', 
-            'storage', 
-            'analytics', 
-            'remoteConfig',
-            'performance',
-          ].filter(feature => typeof app[feature] === 'function');
-          loadEl.textContent = `Firebase SDK loaded with ${features.join(', ')}`;
-        } catch (e) {
-          console.error(e);
-          loadEl.textContent = 'Error loading the Firebase SDK, check the console.';
-        }
-      });
-    </script>
+      <header class="s-intro__header">
+        <div class="s-intro__logo">
+          <a class="logo" href="index.html">
+            <img src="images/logo.svg" alt="Homepage" />
+          </a>
+        </div>
+      </header>
+
+      <div class="row s-intro__content">
+        <div class="column">
+          <div class="text-pretitle">
+            For your <b>Figma</b> and <b>FigJam</b><br /><br />
+          </div>
+
+          <h1 class="text-huge-title">
+            The greatest powers<br />
+            just a click away<br />from you.
+          </h1>
+
+          <div class="s-intro__content-bottom">
+            <div class="s-intro__content-bottom-block">
+              <h5>STAY TUNED!</h5>
+              <h6>We are launching very soon, sign up to be notified.</h6>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="s-intro__notify">
+        <button type="button" class="btn--stroke btn--small ss-modal-trigger">
+          <img src="images/icone-figma.png" class="img-btn-figma" />Sign up with
+          Figma
+        </button>
+      </div>
+    </section>
+
+    <div class="bottom">
+      <div class="menu">
+        <div class="left">
+          <a href="/" rel="noreferrer"><h1 class="name">FigPower</h1></a
+          ><a href="/privacy" rel="noreferrer" target="_self"
+            ><h1 target="">Privacy</h1></a
+          ><a href="/terms" rel="noreferrer" target="_self"><h1>Terms</h1></a
+          ><a href="/pricing" rel="noreferrer" target="_self"
+            ><h1>Pricing</h1></a
+          ><a
+            href="https://docs.figpowers.com"
+            rel="noreferrer"
+            target="_self"
+            ><h1>Help</h1></a
+          >
+        </div>
+        <div class="right">
+          <a href="mailto:contact@figpowers.com"
+            ><h1 class="text-xs md:text-base">Contact</h1></a
+          >
+        </div>
+      </div>
+      <div class="made-with">
+        <div>
+          Made with ❤️ by independent developers. FigPowers is not affiliated
+          with Figma in any way.
+        </div>
+      </div>
+    </div>
   </body>
 </html>
