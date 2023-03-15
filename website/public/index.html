@@ -5,11 +5,9 @@
     <title>FigPowers</title>
     <meta name="description" content="" />
     <meta name="author" content="" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <link rel="stylesheet" href="index.css" />
-
     <style type="text/css" media="screen">
       .s-details .row {
         max-width: var(--width-max);
@@ -23,6 +21,9 @@
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
     <link rel="manifest" href="site.webmanifest" />
+
+    <script src="js/figma.js"></script>
+    <script src="index.js"></script>
   </head>
 
   <body id="top" class="ss-preload theme-static">
@@ -51,14 +52,18 @@
           <div class="s-intro__content-bottom">
             <div class="s-intro__content-bottom-block">
               <h5>STAY TUNED!</h5>
-              <h6>We are launching very soon,<br>sign up to be notified.</h6>
+              <h6>We are launching very soon,<br />sign up to be notified.</h6>
             </div>
           </div>
         </div>
       </div>
 
       <div class="s-intro__notify">
-        <button type="button" class="btn--stroke btn--small ss-modal-trigger">
+        <button
+          id="figma-login"
+          type="button"
+          class="btn--stroke btn--small ss-modal-trigger"
+        >
           <img src="images/icone-figma.png" class="img-btn-figma" />Sign up with
           Figma
         </button>
@@ -68,16 +73,15 @@
     <div class="bottom">
       <div class="menu">
         <div class="left">
-          <a href="/" rel="noreferrer"><h1 class="name">FigPower</h1></a
-          ><a href="/privacy" rel="noreferrer" target="_self"
+          <a href="/" rel="noreferrer"><h1 class="name">FigPower</h1></a>
+          <a href="/privacy" rel="noreferrer" target="_self"
             ><h1 target="">Privacy</h1></a
-          ><a href="/terms" rel="noreferrer" target="_self"><h1>Terms</h1></a
-          ><a href="/pricing" rel="noreferrer" target="_self"
+          >
+          <a href="/terms" rel="noreferrer" target="_self"><h1>Terms</h1></a>
+          <a href="/pricing" rel="noreferrer" target="_self"
             ><h1>Pricing</h1></a
-          ><a
-            href="https://docs.figpowers.com"
-            rel="noreferrer"
-            target="_self"
+          >
+          <a href="https://docs.figpowers.com" rel="noreferrer" target="_self"
             ><h1>Help</h1></a
           >
         </div>

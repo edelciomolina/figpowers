@@ -33,6 +33,10 @@
       {
         "source": "/terms",
         "destination": "/legal/terms-and-conditions.html"
+      },
+      {
+        "source": "/auth",
+        "destination": "/"
       }
     ]
   }
