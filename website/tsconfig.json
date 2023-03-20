@@ -1,17 +1,18 @@
 {
   "compilerOptions": {
-    "noEmit": true,
+    "noEmit": false,
     "noImplicitAny": true,
     "noImplicitThis": true,
     "noUnusedParameters": false,
     "module": "commonjs",
     "noImplicitReturns": true,
     "noUnusedLocals": true,
-    "outDir": "lib",
+    "outDir": "functions/dist",
     "sourceMap": true,
     "strict": true,
     "target": "es2017"
   },
   "compileOnSave": true,
-  "include": ["functions/src"]
+  "include": ["functions/src/**/*.ts"],
+  "exclude": ["node_modules"]
 }
