@@ -9,14 +9,21 @@ import { Request, Response } from "express"
 import { validateFirebaseIdToken } from "./authMiddleware"
 import { IUsers } from "./interfaces"
 
+const apiRouter = express.Router() // eslint-disable-line
 const app = express()
 app.use(cors({ origin: true }))
-app.use(validateFirebaseIdToken)
-
-// eslint-disable-next-line new-cap
-const apiRouter = express.Router()
 app.use("/api", apiRouter)
 
+// INFO Endpoints NÃO seguros --------------------------------------------------
+
+apiRouter.get("/health", async (req: Request, res: Response) => {
+  const userData = { state: true }
+  res.status(200).send(JSON.stringify(userData))
+})
+
+// INFO Endpoints seguros ------------------------------------------------------
+
+apiRouter.use(validateFirebaseIdToken)
 apiRouter.get("/", async (req: Request, res: Response) => {
   // const snapshot = await admin.firestore().collection("users").get()
 
@@ -70,9 +77,4 @@ apiRouter.delete("/:id", async (req: Request, res: Response) => {
   res.status(200).send()
 })
 
-export const helloWorld = functions.https.onRequest((request, response) => {
-  functions.logger.info("Hello logs!", { structuredData: true })
-  response.send("Hello from Firebase!")
-})
-
-exports.app = functions.https.onRequest(app)
+exports.api = functions.https.onRequest(app)

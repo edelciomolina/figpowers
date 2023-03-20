@@ -27,8 +27,8 @@
     ],
     "rewrites": [
       {
-        "source": "/api",
-        "function": "app"
+        "source": "/api{,/**}",
+        "function": "api"
       },
       {
         "source": "/privacy",
