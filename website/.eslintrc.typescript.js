@@ -29,5 +29,6 @@ module.exports = {
     "semi": [2, "never"],
     "quote-props": ["error", "as-needed"],
     "object-curly-spacing": "off",
+    "no-unused-vars": ["error"],
   },
 }

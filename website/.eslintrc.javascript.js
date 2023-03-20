@@ -22,7 +22,7 @@ module.exports = {
     "/functions/lib/**/*", // Ignore built files.
   ],
   plugins: ["import"],
-  rules: {
+  rules: { 
     "quotes": ["error", "double"],
     "import/no-unresolved": 0,
     "indent": ["error", 2],

@@ -1,5 +1,9 @@
 {
   "compilerOptions": {
+    "noEmit": true,
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "noUnusedParameters": false,
     "module": "commonjs",
     "noImplicitReturns": true,
     "noUnusedLocals": true,
@@ -9,7 +13,5 @@
     "target": "es2017"
   },
   "compileOnSave": true,
-  "include": [
-    "functions/src"
-  ]
+  "include": ["functions/src"]
 }

@@ -27,6 +27,10 @@
     ],
     "rewrites": [
       {
+        "source": "/api",
+        "function": "app"
+      },
+      {
         "source": "/privacy",
         "destination": "/legal/privacy-policy.html"
       },
