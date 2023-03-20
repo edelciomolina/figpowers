@@ -1,8 +1,8 @@
 {
-    "name": "Figma Powers",
+    "name": "FigPowers",
     "manifest_version": 3,
     "version": "1.0.0",
-    "description": "A Figma Chrome Extensions for translation",
+    "description": "The greatest powers just a click away from you",
     "options_page": "options.html",
     "permissions": [
         "storage",
@@ -14,12 +14,12 @@
     ],  
     "action": {
         "default_icon": {
-            "16": "assets/ext-icon-16.png",
-            "24": "assets/ext-icon-24.png",
-            "32": "assets/ext-icon-32.png",
-            "48": "assets/ext-icon-48.png",
-            "96": "assets/ext-icon-96.png",
-            "128": "assets/ext-icon-128.png"
+            "16": "assets/16x16.png",
+            "24": "assets/24x24.png",
+            "32": "assets/32x32.png",
+            "48": "assets/48x48.png",
+            "96": "assets/96x96.png",
+            "128": "assets/128x128.png"
         },
         "default_title": "Figma Powers",
         "default_popup": "popup.html"
