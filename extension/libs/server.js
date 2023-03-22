@@ -1,6 +1,8 @@
 // eslint-disable-next-line no-redeclare
-const Server = {
-    Auth: async newLogin => {
+const Server = {}
+
+;(() => {
+    const Auth = async newLogin => {
         let authData = {}
         let newUser = false
 
@@ -40,5 +42,7 @@ const Server = {
                 message: authData.message,
             }
         }
-    },
-}
+    }
+
+    Server.Auth = Auth
+})()
