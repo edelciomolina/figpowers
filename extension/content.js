@@ -117,9 +117,9 @@ TODO https://www.figma.com/api/community_shelves?shelf_type=file_browser_recomme
 
 
 */
- 
+
 // INFO Interceptando /track !!!!!!!!!!!!!!!!!!!!!!! 
-  
+
 const originalXHR = window.XMLHttpRequest;
 function newXHR() {
     const xhr = new originalXHR();
@@ -150,22 +150,22 @@ const sections = document.querySelectorAll('[class^="nav_section--section"]');
 
 // Adicionar um listener de eventos em cada seção
 sections.forEach(section => {
-  // Encontrar todos os elementos dentro da seção que começam com a classe "nav_section--orderedFolders"
-  const orderedFolders = section.querySelectorAll('[class^="nav_section--orderedFolders"]');
+    // Encontrar todos os elementos dentro da seção que começam com a classe "nav_section--orderedFolders"
+    const orderedFolders = section.querySelectorAll('[class^="nav_section--orderedFolders"]');
 
-  // Tornar visíveis todos os elementos encontrados
-  orderedFolders.forEach(folder => {
-    folder.style.display = 'block';
-  });
-
-  // Adicionar o listener de eventos
-  section.addEventListener('click', event => {
-    // Impedir a ação padrão do evento (neste caso, evitar a navegação)
-    event.preventDefault();
-
-    // Alternar a exibição dos elementos
+    // Tornar visíveis todos os elementos encontrados
     orderedFolders.forEach(folder => {
-      folder.style.display = folder.style.display === 'block' ? 'none' : 'block';
+        folder.style.display = 'block';
     });
-  });
+
+    // Adicionar o listener de eventos
+    section.addEventListener('click', event => {
+        // Impedir a ação padrão do evento (neste caso, evitar a navegação)
+        event.preventDefault();
+
+        // Alternar a exibição dos elementos
+        orderedFolders.forEach(folder => {
+            folder.style.display = folder.style.display === 'block' ? 'none' : 'block';
+        });
+    });
 });

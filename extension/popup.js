@@ -1,37 +1,35 @@
-const AddLoginListeners = () => {
-    console.log('aqui')
-    const authButton = document.getElementById('figma-login')
-    authButton.addEventListener('click', FigmaLogin)
-}
+// eslint-disable-next-line no-redeclare
+const Popup = {}
 
-const FigmaLogin = () => {
-    chrome.runtime.sendMessage({ type: 'figma-login' }, response => {
-        console.log('figma?', response)
-    })
-}
+    ; (() => {
+        const AddLoginListeners = () => {
+            document.getElementById('figma-login').addEventListener('click', FigmaLogin)
+        }
 
-const IsLogged = () => {
-    return new Promise(resolve => {
-        chrome.runtime.sendMessage({ type: 'check-login' }, response => {
-            console.log('figma?', response)
-            alert(JSON.stringify(response))
-            resolve(true)
+        const ChangePage = (cmd, response) => {
+            alert(`${cmd}: ${JSON.stringify(response)}`)
+        }
+        const FigmaLogin = () => {
+            chrome.runtime.sendMessage({ type: 'figma-login' }, response => {
+                ChangePage(response.error ? 'needlogin' : 'logged', response)
+            })
+        }
+
+        const CheckLogin = () => {
+            chrome.runtime.sendMessage({ type: 'check-login' }, response => {
+                ChangePage(response.error ? 'needlogin' : 'logged', response)
+            })
+        }
+
+        const PopupOpened = callback => {
+            chrome.runtime.sendMessage({ type: 'popup-opened' }, response => {
+                callback()
+            })
+        }
+
+        PopupOpened(() => {
+            AddLoginListeners()
+            ChangePage('loading')
+            CheckLogin()
         })
-    })
-}
-
-const PopupOpened = callback => {
-    chrome.runtime.sendMessage({ type: 'popup-opened' }, response => {
-        console.log('figma?', response)
-        callback()
-    })
-}
-
-PopupOpened(() => {
-    AddLoginListeners()
-    if (IsLogged()) {
-        //TODO
-    } else {
-        //TODO
-    }
-})
+    })()
