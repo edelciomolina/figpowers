@@ -12,27 +12,31 @@ const Figma = {}
 
     let authData
 
-    async function authenticate () {
-        const tab = await new Promise(resolve => {
-            chrome.tabs.create({ url: AUTH_ENDPOINT, active: true }, tab => {
-                resolve(tab)
+    async function authenticate (authDataStored) {
+        if (!authDataStored) {
+            const tab = await new Promise(resolve => {
+                chrome.tabs.create({ url: AUTH_ENDPOINT, active: true }, tab => {
+                    resolve(tab)
+                })
             })
-        })
 
-        let authCode
-        await new Promise(resolve => {
-            chrome.tabs.onUpdated.addListener(function listener (tabId, changeInfo) {
-                if (tabId === tab.id && changeInfo.url && changeInfo.url.startsWith(REDIRECT_URI)) {
-                    chrome.tabs.onUpdated.removeListener(listener)
-                    const query = new URLSearchParams(new URL(changeInfo.url).search)
-                    authCode = query.get('code')
-                    chrome.tabs.remove(tab.id, () => resolve())
-                }
+            let authCode
+            await new Promise(resolve => {
+                chrome.tabs.onUpdated.addListener(function listener (tabId, changeInfo) {
+                    if (tabId === tab.id && changeInfo.url && changeInfo.url.startsWith(REDIRECT_URI)) {
+                        chrome.tabs.onUpdated.removeListener(listener)
+                        const query = new URLSearchParams(new URL(changeInfo.url).search)
+                        authCode = query.get('code')
+                        chrome.tabs.remove(tab.id, () => resolve())
+                    }
+                })
             })
-        })
 
-        authData = await authToken(authCode)
-        return true
+            authData = await authToken(authCode)
+        } else {
+            authData = authDataStored
+        }
+        return { ...authData, ...(await whoAmI()) }
     }
 
     async function authToken (authCode) {
@@ -78,5 +82,4 @@ const Figma = {}
     }
 
     Figma.Authenticate = authenticate
-    Figma.WhoAmI = whoAmI
 })()

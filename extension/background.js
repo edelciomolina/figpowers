@@ -3,24 +3,23 @@ self.importScripts(
     'libs/figma.js',
     'libs/translate.js',
     'libs/server.js',
-    'libs/chrome.js'
+    'libs/chrome.js',
+    'libs/api.js'
 )
 
 Translate.LoadLocates()
 
-//INFO aguardando solicitação do content
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-  if (request.type === 'popup-opened') sendResponse()
-  if (request.type === 'figma-login') sendResponse(Server.Auth(request))
-  if (request.type === 'translate') sendResponse(Translate.Execute(request))
-  // if (request.type === 'users') sendResponse(Test_Firebase(request, sender, sendResponse))
+    if (request.type === 'popup-opened') sendResponse()
+    if (request.type === 'figma-login') Server.Auth(true).then(result => sendResponse(result))
+    if (request.type === 'check-login') Server.Auth(false).then(result => sendResponse(result))
+    if (request.type === 'translate') sendResponse(Translate.Execute(request))
+    return true
 })
-
 
 // chrome.tabs.query({active:true,currentWindow:true}, function(tabs){
 //   chrome.pageAction.show(tabs[0].id);
 // });
-
 
 // const sendToServer = (command, content) => {
 
