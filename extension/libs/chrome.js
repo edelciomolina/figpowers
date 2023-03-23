@@ -2,6 +2,7 @@
 const Chrome = {}
 
     ; (() => {
+
         chrome.tabs.onActivated.addListener(x => {
             chrome.tabs.get(x.tabId, tab => {
                 if (tab.url.startsWith('https://www.figma.com')) {
