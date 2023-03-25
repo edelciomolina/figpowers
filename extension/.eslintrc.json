@@ -1,27 +1,29 @@
 {
-    "globals": {
-        "firebase": true,
-        "firebaseConfig": true,
-        "chrome": true,
-        //
-        "Figma": true,
-        "Translate": true,
-        "Server": true,
-        "Chrome": true,
-        "API": true
-    },
-    "env": {
-        "browser": true,
-        "es2021": true,
-        "worker": true,
-        "shared-node-browser": true
-    },
-    "extends": "eslint:recommended",
-    "overrides": [],
-    "parserOptions": {
-        "ecmaVersion": "latest"
-    },
-    "rules": {
-        "no-unused-vars": "off"
-    }
+  "globals": {
+    "firebase": true,
+    "firebaseConfig": true,
+    "chrome": true,
+    //
+    "Figma": true,
+    "Translate": true,
+    "Notifications": true,
+    "Chrome": true,
+    "StorageEx": true,
+    "Auth": true,
+    "API": true
+  },
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "worker": true,
+    "shared-node-browser": true
+  },
+  "extends": "eslint:recommended",
+  "overrides": [],
+  "parserOptions": {
+    "ecmaVersion": "latest"
+  },
+  "rules": {
+    "no-unused-vars": "off"
+  }
 }

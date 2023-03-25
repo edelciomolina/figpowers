@@ -27,7 +27,10 @@ const Figma = {}
                             chrome.tabs.onUpdated.removeListener(listener)
                             const query = new URLSearchParams(new URL(changeInfo.url).search)
                             authCode = query.get('code')
-                            chrome.tabs.remove(tab.id, () => resolve())
+                            chrome.tabs.remove(tab.id, () => {
+
+                                resolve()
+                            })
                         }
                     })
                 })

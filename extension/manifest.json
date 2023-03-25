@@ -2,8 +2,8 @@
     "name": "FigPowers",
     "manifest_version": 3,
     "version": "1.0.0",
-    "description": "The greatest powers just a click away from you",
-    "options_page": "options.html",
+    "default_locale": "en",
+    "description": "__MSG_appDesc__", 
     "permissions": [
         "storage",
         "tabs",
@@ -11,7 +11,7 @@
         "scripting",
         "declarativeContent",
         "notifications"
-    ],  
+    ],
     "action": {
         "default_icon": {
             "16": "assets/16x16.png",
@@ -21,12 +21,12 @@
             "96": "assets/96x96.png",
             "128": "assets/128x128.png"
         },
-        "default_title": "Figma Powers",
+        "default_title": "FigPowers",
         "default_popup": "popup.html"
     },
     "background": {
         "service_worker": "background.js"
-    }, 
+    },
     "host_permissions": [
         "https://figma.com/",
         "https://www.figma.com/"
@@ -45,13 +45,13 @@
     "commands": {
         "_execute_action": {
             "suggested_key": {
-                "default": "Alt+I",
-                "windows": "Alt+I",
-                "mac": "Alt+I",
-                "chromeos": "Alt+I",
-                "linux": "Alt+I"
+                "default": "Alt+P",
+                "windows": "Alt+P",
+                "chromeos": "Alt+P",
+                "linux": "Alt+P",
+                "mac": "Alt+P"
             },
-            "description": "Toggle feature foo"
+            "description": "__MSG_shortcutOpenExtension__"
         }
     }
 }

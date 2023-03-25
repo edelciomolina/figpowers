@@ -63,5 +63,8 @@ const Translate = {}
             const result = FindTranslation(locales, UserLanguageFrom(), UserLanguageTo(), valuesToSearch)
             return result
         }
+
         Translate.LoadLocates = LoadLocates
+        Translate.Execute = Execute
+
     })()

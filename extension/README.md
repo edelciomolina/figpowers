@@ -1,1 +1,1 @@
-# Figma Powers - Extension
+# FigPowers - Extension

@@ -11,6 +11,8 @@ const Popup = {}
         let $userEmail
         let $needlogin
         let $figmaButton
+        let $startYourTrial
+        let $signOut
 
         const PrepareDOM = () => {
             $pages = document.querySelectorAll('.page');
@@ -21,10 +23,19 @@ const Popup = {}
             $userName = document.querySelectorAll('.user-name')[0];
             $userEmail = document.querySelectorAll('.user-email')[0];
             $figmaButton = document.querySelectorAll('.figma-login')[0];
+            $startYourTrial = document.querySelectorAll('.startYourTrial')[0];
+            $signOut = document.querySelectorAll('.signOut')[0];
+
+            document.querySelectorAll('[i18n]').forEach(elem => {
+                elem.innerText = chrome.i18n.getMessage(elem.attributes.i18n.value)
+            })
+
         }
 
         const AddListeners = () => {
             $figmaButton.addEventListener('click', FigmaLogin)
+            $startYourTrial.addEventListener('click', StartYourTrial)
+            $signOut.addEventListener('click', SignOut)
         }
 
         const ChangePage = (cmd) => {
@@ -48,10 +59,27 @@ const Popup = {}
 
         }
 
+        const StartYourTrial = () => {
+
+            alert('TODO: Stripe Trial')
+
+        }
+
+        const SignOut = async () => {
+
+            chrome.runtime.sendMessage({ type: 'clean-storage' }, response => {
+
+                ChangePage('loading')
+                setTimeout(() => ChangePage('needlogin'), 2000)
+
+            })
+
+        }
+
         const FigmaLogin = () => {
             chrome.runtime.sendMessage({ type: 'figma-login' }, response => {
-                ChangePage(response.error ? 'needlogin' : 'logged')
-                if (!response.error) {
+                ChangePage(response.err ? 'needlogin' : 'logged')
+                if (!response.err) {
                     LoadUserData(response)
                 }
             })
@@ -59,23 +87,18 @@ const Popup = {}
 
         const CheckLogin = () => {
             chrome.runtime.sendMessage({ type: 'check-login' }, response => {
-                ChangePage(response.error ? 'needlogin' : 'logged')
-                if (!response.error) {
+                ChangePage(response.err ? 'needlogin' : 'logged')
+                if (!response.err) {
                     LoadUserData(response)
                 }
             })
         }
 
-        const PopupOpened = callback => {
-            chrome.runtime.sendMessage({ type: 'popup-opened' }, response => {
-                callback(response)
-            })
-        }
-
-        PopupOpened(async () => {
+        window.addEventListener("DOMContentLoaded", (event) => {
             PrepareDOM()
-            AddListeners()
             ChangePage('loading')
+            AddListeners()
             CheckLogin()
-        })
+        });
+
     })()
