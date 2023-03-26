@@ -27,7 +27,7 @@ const Popup = {}
             $signOut = document.querySelectorAll('.signOut')[0];
 
             document.querySelectorAll('[i18n]').forEach(elem => {
-                elem.innerText = chrome.i18n.getMessage(elem.attributes.i18n.value)
+                elem.innerHTML = chrome.i18n.getMessage(elem.attributes.i18n.value)
             })
 
         }
@@ -94,11 +94,16 @@ const Popup = {}
             })
         }
 
+        const ClearNotifications = () => {
+            chrome.runtime.sendMessage({ type: 'clear-notifications' })
+        }
+
         window.addEventListener("DOMContentLoaded", (event) => {
             PrepareDOM()
             ChangePage('loading')
             AddListeners()
             CheckLogin()
+            ClearNotifications()
         });
 
     })()

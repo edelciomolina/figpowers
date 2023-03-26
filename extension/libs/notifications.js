@@ -3,6 +3,19 @@ const Notifications = {}
 
     ; (() => {
 
+        const ClearAll = async () => {
+
+            CleanBadge()
+            chrome.notifications.getAll((items) => {
+                if (items) {
+                    for (let key in items) {
+                        chrome.notifications.clear(key);
+                    }
+                }
+            });
+
+        }
+
         const CleanBadge = async () => {
 
             chrome.action.setBadgeText({ text: '' });
@@ -83,6 +96,7 @@ const Notifications = {}
 
         }
 
+        Notifications.ClearAll = ClearAll
         Notifications.CleanBadge = CleanBadge
         Notifications.Welcome = Welcome
         Notifications.Authenticated = Authenticated

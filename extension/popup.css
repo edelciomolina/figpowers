@@ -4,6 +4,7 @@ body {
   text-align: center;
   display: flex;
   overflow: hidden;
+  font-family: Inter;
 }
 
 .page {
@@ -56,7 +57,10 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 20px;
+  margin: 30px;
+}
+.content .left {
+  text-align: left;
 }
 
 .user-name {
@@ -82,13 +86,16 @@ body {
 
 .button {
   flex: 1;
-  padding: 15px;
+  display: flex;
+  padding: 12px;
   text-align: center;
   color: #fff;
   border: none;
   cursor: pointer;
   font-weight: normal;
   border-radius: 10px;
+  align-items: center;
+  justify-content: center;
 }
 
 .button:hover {
@@ -117,6 +124,38 @@ body {
   color: #c55151;
   border: 1px solid #c55151;
   margin: 0px 30px 30px 30px;
+}
+
+.black {
+  background-color: #000000;
+  color: #fff;
+}
+
+.figma-login {
+  margin: 30px;
+}
+
+.figma-login img {
+  height: 18px;
+  margin-right: 10px;
+}
+.sloganForApps {
+  font-size: 14px;
+}
+
+.sloganMessage {
+  font-size: 23px;
+  font-weight: 600;
+  margin-top: 10px;
+  line-height: 30px;
+  margin-bottom: 15px;
+}
+
+.signUpInstructions {
+  text-align: left;
+  width: 100%;
+  margin-top: 12px;
+  line-height: 18px;
 }
 
 .lds-ellipsis {

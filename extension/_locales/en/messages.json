@@ -1,38 +1,53 @@
 {
-    "appDesc": {
-        "message": "The greatest powers just a click away from you"
-    },
-    "welcomeTitle": {
-        "message": "Welcome to FigPowers"
-    },
-    "welcomeMessage": {
-        "message": "Go to extensions in your browser and search for FigPowers to get started"
-    }, 
-    "welcomeContextMessage": {
-        "message": "Or press Alt+P to go there"
-    },
-    "shortcutOpenExtension": {
-        "message": "Open FigPowers"
-    },
-    "gotIt": {
-        "message": "Got it!"
-    },
-    "logInWithFigma": {
-        "message": "Log in with Figma"
-    },
-    "startYourTrial": {
-        "message": "Start your trial"
-    },
-    "signOut": {
-        "message": "Sign out"
-    },
-    "validAuthTitle": {
-        "message": "All ready!"
-    },
-    "validAuthMessage": {
-        "message": "Now just open your Figma and enjoy your super powers!"
-    },
-    "gotoFigma": {
-        "message": "Go to Figma"
-    }
+  "appDesc": {
+    "message": "The greatest powers just a click away from you"
+  },
+  "gotIt": {
+    "message": "Got it!"
+  },
+  "logInWithFigma": {
+    "message": "Log in with Figma"
+  },
+  "messagotoFigmage": {
+    "message": "Go to Figma"
+  },
+  "shortcutOpenExtension": {
+    "message": "Open FigPowers"
+  },
+  "signOut": {
+    "message": "Sign out"
+  },
+  "startYourTrial": {
+    "message": "Start your trial"
+  },
+  "validAuthMessage": {
+    "message": "Now just open your Figma and enjoy your super powers!"
+  },
+  "validAuthTitle": {
+    "message": "All ready!"
+  },
+  "welcomeContextMessage": {
+    "message": "Or press Alt+P to go there"
+  },
+  "welcomeMessage": {
+    "message": "Go to extensions in your browser and search for FigPowers to get started"
+  },
+  "welcomeTitle": {
+    "message": "Welcome to FigPowers"
+  },
+  "sloganForApps": {
+    "message": "For your <b>Figma</b> and <b>FigJam</b>"
+  },
+  "sloganMessage": {
+    "message": "The greatest powers<br>just a click away<br>from you"
+  },
+  "signUpInstructionsLine1": {
+    "message": "1° Click the button below to get started."
+  },
+  "signUpInstructionsLine2": {
+    "message": "2° You will be directed to a new window to login with your Figma account."
+  },
+  "signUpInstructionsLine3": {
+    "message": "3° Once confirmed, come back here to continue."
+  }
 }
