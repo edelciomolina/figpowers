@@ -3,14 +3,16 @@
     "firebase": true,
     "firebaseConfig": true,
     "chrome": true,
-    //
+    //Background
     "Figma": true,
     "Translate": true,
     "Notifications": true,
     "Chrome": true,
     "StorageEx": true,
     "Auth": true,
-    "API": true
+    "API": true,
+    //Contents
+    "HomeButton": true
   },
   "env": {
     "browser": true,

@@ -3,7 +3,7 @@
     "manifest_version": 3,
     "version": "1.0.0",
     "default_locale": "en",
-    "description": "__MSG_appDesc__", 
+    "description": "__MSG_appDesc__",
     "permissions": [
         "storage",
         "tabs",
@@ -38,7 +38,12 @@
                 "https://figma.com/*"
             ],
             "js": [
+                "modules/home.js",
+                "modules/translation.js",
                 "content.js"
+            ],
+            "css": [
+                "modules/home.css"
             ]
         }
     ],
