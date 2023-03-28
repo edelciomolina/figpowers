@@ -5,6 +5,54 @@ const PagesGroup = {}
 
         const MainSelector = '[class*=pages_panel] > [class*=scroll_container--full] > div > div'
 
+        const MovingDone = (elem, idx) => {
+
+            if (!idx) return
+            console.log(elem, idx)
+
+        }
+
+        const MovingObserver = () => {
+
+            var pai = document.querySelector("[class*=pages_panel] > [class*=scroll_container--full] > div > div");
+            let elementMovedFirst = null
+            let indexFoundFirst = null
+
+            const observer = new MutationObserver((mutations) => {
+                mutations.forEach((mutation) => {
+                    if (mutation.type === 'childList') {
+                        const elementMovedLast = mutation.removedNodes[0];
+                        if (elementMovedLast) {
+                            const indexFoundLast = Array.from(pai.children).indexOf(elementMovedLast);
+
+                            elementMovedFirst = !elementMovedFirst ? elementMovedLast : elementMovedFirst
+                            indexFoundFirst = !indexFoundFirst ? indexFoundLast : indexFoundFirst
+
+                            setTimeout(() => {
+
+                                if (indexFoundLast != null || indexFoundFirst != null) {
+
+                                    if (indexFoundFirst == indexFoundLast) {
+                                        MovingDone(elementMovedLast, indexFoundLast)
+                                    } else {
+                                        MovingDone(elementMovedFirst, indexFoundFirst)
+                                    }
+
+                                    elementMovedFirst = null;
+                                    indexFoundFirst = null;
+
+                                }
+
+                            }, 1000)
+                        }
+                    }
+                });
+            });
+
+            observer.observe(pai, { childList: true });
+
+        }
+
         const Create = async () => {
 
             //INFO carregando htmls necessários
@@ -13,16 +61,10 @@ const PagesGroup = {}
 
             //INFO insere um novo grupo acima do elemento
             const insertNewGroup = (pageItem) => {
-                const parentToInsertNewGroup = pageItem.parentElement.parentElement
+                const parentToInsertNewGroup = pageItem.parentElement
                 parentToInsertNewGroup.insertAdjacentHTML('beforebegin', pagesGroupHtml);
-                parentToInsertNewGroup.classList.add('figpowers', 'pages-group-button-new-dont');
+                parentToInsertNewGroup.parentElement.classList.add('figpowers', 'pages-group-button-new-dont');
             }
-
-            //TODO verifica o elemento arrastado 
-            document.querySelector(MainSelector).addEventListener('mouseup', (event) => {
-                console.log('Elemento arrastado para fora da div:', event.target);
-                // aqui você pode inserir o código que deseja executar quando o elemento é arrastado para fora da div
-            });
 
             //INFOpPercorre todos os itens de página
             const elementosDiv = document.querySelectorAll(`${MainSelector} > div`);
@@ -37,7 +79,15 @@ const PagesGroup = {}
                     const buttonNew = div.querySelector('.pages-group-button-new');
                     buttonNew.addEventListener('click', (event) => insertNewGroup(event.target));
 
+
+                    div.addEventListener("drag", (event) => {
+                        console.log("dragging");
+                    });
+
                 });
+
+            //INFO ativa observer para verificar paginas arrastadas
+            MovingObserver()
 
         }
 
