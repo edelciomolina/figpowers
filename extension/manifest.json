@@ -31,19 +31,33 @@
         "https://figma.com/",
         "https://www.figma.com/"
     ],
+    "web_accessible_resources": [
+        {
+            "resources": [
+                "assets/*.png",
+                "modules/*.html"
+            ],
+            "matches": [
+                "https://www.figma.com/*",
+                "https://figma.com/*"
+            ]
+        }
+    ],
     "content_scripts": [
         {
             "matches": [
                 "https://www.figma.com/*",
                 "https://figma.com/*"
             ],
-            "js": [
-                "modules/home.js",
-                "modules/translation.js",
-                "content.js"
+            "js": [ 
+                "content.js",
+                "modules/pages-group.js",
+                "modules/home-button.js",
+                "modules/translation.js"
             ],
             "css": [
-                "modules/home.css"
+                "modules/pages-group.css",
+                "modules/home-button.css"
             ]
         }
     ],

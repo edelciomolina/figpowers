@@ -1,0 +1,33 @@
+.figpowers.pages-group {
+  display: flex;
+  background-color: var(--color-bglburegistrationbanner, #eeeeee);
+  padding: 10px 20px 10px 20px;
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom: solid 1px #fff;
+}
+
+.figpowers.pages-group .pages-group-buttons {
+  flex-direction: row;
+  width: 30px;
+  justify-content: space-between;
+  display: none;
+}
+
+.figpowers.pages-group:hover > .pages-group-buttons {
+  display: flex;
+}
+
+.figpowers.pages-group-button-new {
+  position: relative;
+  height: 0px;
+  line-height: 32px;
+  margin-right: 15px;
+  z-index: 1;
+  float: right;
+  display: none;
+}
+
+.figpowers.page-item:not(.pages-group-button-new-dont):hover > .pages-group-button-new {
+  display: block;
+}

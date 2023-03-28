@@ -12,7 +12,9 @@
     "Auth": true,
     "API": true,
     //Contents
-    "HomeButton": true
+    "waitForElm": true,
+    "HomeButton": true,
+    "PagesGroup": true
   },
   "env": {
     "browser": true,

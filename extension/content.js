@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-redeclare
 const waitForElm = (selector) => {
     return new Promise(resolve => {
         if (document.querySelector(selector)) {
@@ -18,31 +19,12 @@ const waitForElm = (selector) => {
     });
 }
 
-waitForElm('#react-page').then((container) => {
-
-    const observer = new MutationObserver((mutationsList, observer) => {
-        for (let mutation of mutationsList) {
-            if (mutation.type === 'childList') {
-
-                const elem = mutation.addedNodes[0]
-                if (elem) {
-                    //TODO
-                    //recursiveTranslation(elem) 
-                }
-            }
-        }
-    });
-
-    observer.observe(container, { childList: true, subtree: true })
-
-});
 
 
+// waitForElm('#react-page [class*=scroll_container--full] > div').then((container) => {
 
-waitForElm('#react-page [class*=toolbar_view--toolbar]').then((container) => {
+//     PagesGroup.Create()
 
-    HomeButton.Create()
-
-});
+// });
 
 
