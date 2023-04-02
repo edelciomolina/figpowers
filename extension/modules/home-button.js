@@ -3,10 +3,6 @@ const HomeButton = {}
 
     ; (() => {
 
-        const RedirectToFiles = () => {
-            window.location.assign('https://figma.com/files')
-        }
-
         const Create = async () => {
 
             const buttonFetch = await fetch(chrome.runtime.getURL("modules/home-button.html"));
@@ -15,8 +11,6 @@ const HomeButton = {}
             const insertElem = document.querySelector('[class*=toolbar_view--toolbar]');
             insertElem.insertAdjacentHTML('afterbegin', buttonHtml);
 
-            const homeButtonElem = document.querySelector('.figpowers.home-buttom');
-            homeButtonElem.addEventListener('click', RedirectToFiles);
         }
 
         HomeButton.Create = Create

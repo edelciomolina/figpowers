@@ -34,6 +34,7 @@
     "web_accessible_resources": [
         {
             "resources": [
+                "assets/*.svg",
                 "assets/*.png",
                 "modules/*.html"
             ],
@@ -50,14 +51,17 @@
                 "https://figma.com/*"
             ],
             "js": [ 
+                "vendor/jquery-3.6.0.min.js",
+                "vendor/colorPick.min.js",
                 "content.js",
                 "modules/pages-group.js",
                 "modules/home-button.js",
                 "modules/translation.js"
             ],
             "css": [
-                "modules/pages-group.css",
-                "modules/home-button.css"
+                "vendor/colorPick.min.css",
+                "modules/home-button.css",
+                "modules/pages-group.css"
             ]
         }
     ],

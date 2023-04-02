@@ -57,32 +57,50 @@ const PagesGroup = {}
 
             //INFO carregando htmls necessários
             const pagesGroupHtml = await (await fetch(chrome.runtime.getURL("modules/pages-group.html"))).text()
-            const pagesGroupNewHtml = await (await fetch(chrome.runtime.getURL("modules/pages-group.new.html"))).text()
 
             //INFO insere um novo grupo acima do elemento
-            const insertNewGroup = (pageItem) => {
-                const parentToInsertNewGroup = pageItem.parentElement
-                parentToInsertNewGroup.insertAdjacentHTML('beforebegin', pagesGroupHtml);
-                parentToInsertNewGroup.parentElement.classList.add('figpowers', 'pages-group-button-new-dont');
+            const newGroup = (pageItemFigma) => {
+
+                const pageItem = $(pageItemFigma).parents('.fgp_gpg_item')
+                const initialColor = pageItem.css('border-color') || "#FFFFFF"
+
+                $(pageItemFigma).colorPick({
+                    initialColor,
+                    paletteLabel: 'Group Color',
+                    allowCustomColor: false,
+                    allowRecent: false,
+                    palette: ["#FFFFFF", "#FF0000", "#008000", "#0000FF",
+                        "#FFFF00", "#FFC0CB", "#800080", "#808080",
+                        "#FFA500", "#A52A2A", "#40E0D0", "#000000",
+                    ],
+                    onColorSelected: function () {
+
+                        if (this.color.toUpperCase() === '#FFFFFF') {
+                            pageItem.removeClass('fgp_gpg_group');
+                        } else {
+                            pageItem.addClass('fgp_gpg_group');
+                            pageItem.css('border-color', this.color)
+                            pageItem.find('[class*=pages_panel--pageRow]').css('background-color', `${this.color}20`)
+                            pageItem.find('[class*=pages_panel--pageRow] span').css('background-color', 'initial')
+                        }
+                    },
+                });
+
+
             }
 
-            //INFOpPercorre todos os itens de página
+            //INFO percorre todos os itens de página
             const elementosDiv = document.querySelectorAll(`${MainSelector} > div`);
             elementosDiv.forEach(
                 div => {
 
                     //INFO insere botão para novo grupo
-                    div.classList.add('figpowers', 'page-item');
-                    div.insertAdjacentHTML('afterbegin', pagesGroupNewHtml)
+                    div.classList.add('fgp_gpg_item');
+                    div.insertAdjacentHTML('afterbegin', pagesGroupHtml)
 
                     //INFO cria evento para criação do novo grupo
-                    const buttonNew = div.querySelector('.pages-group-button-new');
-                    buttonNew.addEventListener('click', (event) => insertNewGroup(event.target));
-
-
-                    div.addEventListener("drag", (event) => {
-                        console.log("dragging");
-                    });
+                    const buttonNew = $('.fgp_gpg_color', div);
+                    buttonNew.on('mousedown', (event) => newGroup(event.target));
 
                 });
 
