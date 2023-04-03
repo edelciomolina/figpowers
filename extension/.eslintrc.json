@@ -11,8 +11,10 @@
     "StorageEx": true,
     "Auth": true,
     "API": true,
+    //Functions
+    "colorToHex": true,
     //Contents
-    "$": true, //Jquery
+    "$": true, //Jquery,
     "Huebee": true,
     "waitForElm": true,
     "HomeButton": true,

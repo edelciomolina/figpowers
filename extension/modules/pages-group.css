@@ -5,12 +5,12 @@
 .fgp_gpg_item #colorPick {
   position: relative;
   background-color: var(--color-icon, #333333);
-  margin-left: -148px;
+  margin-left: -138px;
   margin-top: 15px;
   line-height: 11px;
   margin-bottom: 200px;
   padding-right: 6px;
-  width: 140px;
+  width: 130px;
 }
 
 .fgp_gpg_item #colorPick:before {
@@ -61,12 +61,12 @@
 }
 
 .fgp_gpg_group {
-  border-left: solid 5px; 
+  border-left: solid 5px;
   top: 0px;
 }
 
 .fgp_gpg_sticky {
-  position: sticky; 
+  position: sticky;
 }
 
 .fgp_gpg_item .fgp_gpg_buttons {
@@ -80,7 +80,7 @@
   float: right;
   z-index: 1;
 }
- 
+
 .fgp_gpg_item .fgp_gpg_buttons .fgp_gpg_color {
   height: 32px;
   width: 32px;
@@ -89,7 +89,34 @@
   background-repeat: no-repeat;
   background-image: url('chrome-extension://__MSG_@@extension_id__/assets/group-page-color.svg');
 }
- 
-.fgp_gpg_item:hover .fgp_gpg_buttons {
+
+.fgp_gpg_item:not(:has(input)):hover .fgp_gpg_buttons {
   display: flex;
+}
+
+.fgp_gpg_item.fgp_gpg_group .fgp_gpg_buttons {
+  margin-right: 40px;
+}
+
+.fgp_gpg_item.fgp_gpg_group [class*='pages_panel--pageRow']:before {
+  content: attr(data-before);
+  text-align: center;
+  width: 20px;
+  position: absolute;
+  right: 16px;
+  font-size: 10px;
+  font-weight: bold;
+  color: #00000050;
+}
+
+.fgp_gpg_group [class*="pages_panel--renameableNode"] {
+  margin-left: -2px;
+}
+
+.fgp_gpg_item.fgp_gpg_group span{
+  font-weight: 600; 
+}
+
+.fgp_gpg_item.fgp_gpg_group [class*='pages_panel--pageRow'] span {
+  background-color: initial !important;
 }
