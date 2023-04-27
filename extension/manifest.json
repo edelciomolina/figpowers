@@ -1,7 +1,7 @@
 {
   "name": "FigPowers for Figma",
   "manifest_version": 3,
-  "version": "1.0.4",
+  "version": "1.0.6",
   "default_locale": "en",
   "description": "__MSG_appDesc__",
   "permissions": [
@@ -57,13 +57,13 @@
         "https://figma.com/*"
       ],
       "js": [
-        "vendor/jquery-3.6.0.min.js",
+        "vendor/figpowers-jquery-3.6.0.min.js",
         "vendor/colorPick.min.js",
         "libs/client-functions.js",
-        "content.js",
         "modules/pages-group.js",
         "modules/home-button.js",
-        "modules/translation.js"
+        "modules/translation.js",
+        "content.js"
       ],
       "css": [
         "vendor/colorPick.min.css",

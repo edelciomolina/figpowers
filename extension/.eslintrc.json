@@ -13,10 +13,12 @@
     "API": true,
     //Functions
     "colorToHex": true,
-    //Contents
-    "$": true, //Jquery,
+    //Vendors
+    "$$": true, //Jquery,
     "Huebee": true,
+    //Contents
     "waitForElm": true,
+    "Translation": true,
     "HomeButton": true,
     "PagesGroup": true
   },
