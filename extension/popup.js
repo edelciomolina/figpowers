@@ -97,7 +97,6 @@ const Popup = {}
         const ClearNotifications = () => {
             chrome.runtime.sendMessage({ type: 'clear-notifications' })
         }
-
         window.addEventListener("DOMContentLoaded", (event) => {
             PrepareDOM()
             ChangePage('loading')

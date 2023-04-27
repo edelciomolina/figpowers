@@ -3,6 +3,30 @@ const Translation = {}
 
     ; (() => {
 
+        const Create = () => {
+
+            waitForElm('#react-page').then(
+                async (container) => {
+
+                    const observer = new MutationObserver((mutationsList, observer) => {
+                        for (let mutation of mutationsList) {
+                            if (mutation.type === 'childList') {
+
+                                const elem = mutation.addedNodes[0]
+                                if (elem) {
+                                    //TODO
+                                    Translation.Translate(elem)
+                                }
+                            }
+                        }
+                    });
+
+                    observer.observe(container, { childList: true, subtree: true })
+
+                });
+
+        }
+
         const Translate = (parentElem) => {
             if (parentElem && parentElem.children) {
                 for (let i = 0; i < parentElem.children.length; i++) {
@@ -53,24 +77,7 @@ const Translation = {}
         }
 
         Translation.Translate = Translate
+        Translation.Create = Create
 
     })()
 
-waitForElm('#react-page').then((container) => {
-
-    const observer = new MutationObserver((mutationsList, observer) => {
-        for (let mutation of mutationsList) {
-            if (mutation.type === 'childList') {
-
-                const elem = mutation.addedNodes[0]
-                if (elem) {
-                    //TODO
-                    //Translation.Translate(elem) 
-                }
-            }
-        }
-    });
-
-    observer.observe(container, { childList: true, subtree: true })
-
-});

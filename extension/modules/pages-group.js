@@ -132,42 +132,47 @@ const PagesGroup = {}
 
         }
 
-        const Create = async () => {
+        const Create = () => {
 
-            const pagesGroupHtml = await (await fetch(chrome.runtime.getURL("modules/pages-group.html"))).text()
+            waitForElm('[class*=pages_panel] > [class*=scroll_container--full] > div > div').then(
+                async () => {
+
+                    const pagesGroupHtml = await (await fetch(chrome.runtime.getURL("modules/pages-group.html"))).text()
+
+                    //INFO percorre todos os itens de página
+                    const elementosDiv = document.querySelectorAll(`${MainSelector} > div`);
+                    elementosDiv.forEach(
+                        div => {
+
+                            const pageItem = $(div)
+
+                            pageItem.on('click', (event) => {
+
+                                var $element = $(this);
+                                var elementOffset = $element.offset();
+                                var mouseX = event.pageX - elementOffset.left;
+                                var mouseY = event.pageY - elementOffset.top;
+
+                                alert(mouseX)
+
+                            })
 
 
-            //INFO percorre todos os itens de página
-            const elementosDiv = document.querySelectorAll(`${MainSelector} > div`);
-            elementosDiv.forEach(
-                div => {
+                            //INFO insere botão para novo grupo
+                            div.classList.add('fgp_gpg_item');
+                            div.insertAdjacentHTML('afterbegin', pagesGroupHtml)
 
-                    const pageItem = $(div)
+                            //INFO cria evento para criação do novo grupo
+                            const buttonNew = $('.fgp_gpg_color', div);
+                            buttonNew.on('mousedown', (event) => AddNewGroup(event.target));
 
-                    pageItem.on('click', (event) => {
+                        });
 
-                        var $element = $(this);
-                        var elementOffset = $element.offset();
-                        var mouseX = event.pageX - elementOffset.left;
-                        var mouseY = event.pageY - elementOffset.top;
+                    //INFO ativa observer para verificar paginas arrastadas
+                    MovingObserver()
 
-                        alert(mouseX)
-
-                    })
-
-
-                    //INFO insere botão para novo grupo
-                    div.classList.add('fgp_gpg_item');
-                    div.insertAdjacentHTML('afterbegin', pagesGroupHtml)
-
-                    //INFO cria evento para criação do novo grupo
-                    const buttonNew = $('.fgp_gpg_color', div);
-                    buttonNew.on('mousedown', (event) => AddNewGroup(event.target));
 
                 });
-
-            //INFO ativa observer para verificar paginas arrastadas
-            MovingObserver()
 
         }
 
@@ -175,9 +180,5 @@ const PagesGroup = {}
         PagesGroup.Create = Create
 
     })()
-
-waitForElm(PagesGroup.MainSelector).then(PagesGroup.Create);
-
-
 
 
