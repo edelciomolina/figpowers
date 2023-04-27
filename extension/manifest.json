@@ -1,57 +1,87 @@
 {
-    "name": "FigPowers",
-    "manifest_version": 3,
-    "version": "1.0.0",
-    "description": "The greatest powers just a click away from you",
-    "options_page": "options.html",
-    "permissions": [
-        "storage",
-        "tabs",
-        "activeTab",
-        "scripting",
-        "declarativeContent",
-        "notifications"
-    ],  
-    "action": {
-        "default_icon": {
-            "16": "assets/16x16.png",
-            "24": "assets/24x24.png",
-            "32": "assets/32x32.png",
-            "48": "assets/48x48.png",
-            "96": "assets/96x96.png",
-            "128": "assets/128x128.png"
-        },
-        "default_title": "Figma Powers",
-        "default_popup": "popup.html"
+  "name": "FigPowers for Figma",
+  "manifest_version": 3,
+  "version": "1.0.6",
+  "default_locale": "en",
+  "description": "__MSG_appDesc__",
+  "permissions": [
+    "storage",
+    "tabs",
+    "activeTab",
+    "notifications"
+  ],
+  "icons": {
+    "16": "assets/16x16.png",
+    "24": "assets/24x24.png",
+    "32": "assets/32x32.png",
+    "48": "assets/48x48.png",
+    "96": "assets/96x96.png",
+    "128": "assets/128x128.png"
+  },
+  "action": {
+    "default_icon": {
+      "16": "assets/16x16.png",
+      "24": "assets/24x24.png",
+      "32": "assets/32x32.png",
+      "48": "assets/48x48.png",
+      "96": "assets/96x96.png",
+      "128": "assets/128x128.png"
     },
-    "background": {
-        "service_worker": "background.js"
-    }, 
-    "host_permissions": [
-        "https://figma.com/",
-        "https://www.figma.com/"
-    ],
-    "content_scripts": [
-        {
-            "matches": [
-                "https://www.figma.com/*",
-                "https://figma.com/*"
-            ],
-            "js": [
-                "content.js"
-            ]
-        }
-    ],
-    "commands": {
-        "_execute_action": {
-            "suggested_key": {
-                "default": "Alt+I",
-                "windows": "Alt+I",
-                "mac": "Alt+I",
-                "chromeos": "Alt+I",
-                "linux": "Alt+I"
-            },
-            "description": "Toggle feature foo"
-        }
+    "default_title": "FigPowers",
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "host_permissions": [
+    "https://figma.com/",
+    "https://www.figma.com/"
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "assets/*.svg",
+        "assets/*.png",
+        "modules/*.html"
+      ],
+      "matches": [
+        "https://www.figma.com/*",
+        "https://figma.com/*"
+      ]
     }
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.figma.com/*",
+        "https://figma.com/*"
+      ],
+      "js": [
+        "vendor/figpowers-jquery-3.6.0.min.js",
+        "vendor/colorPick.min.js",
+        "libs/client-functions.js",
+        "modules/pages-group.js",
+        "modules/home-button.js",
+        "modules/translation.js",
+        "content.js"
+      ],
+      "css": [
+        "vendor/colorPick.min.css",
+        "modules/home-button.css",
+        "modules/pages-group.css"
+      ]
+    }
+  ],
+  "commands": {
+    "_execute_action": {
+      "suggested_key": {
+        "default": "Alt+P",
+        "windows": "Alt+P",
+        "chromeos": "Alt+P",
+        "linux": "Alt+P",
+        "mac": "Alt+P"
+      },
+      "description": "__MSG_shortcutOpenExtension__"
+    }
+  }
 }

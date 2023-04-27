@@ -1,6 +1,6 @@
 {
-  "name": "figma-translator",
-  "version": "1.0.0",
+  "name": "figpowers",
+  "version": "1.0.6",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -8,16 +8,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/edelciomolina/figma-translator.git"
+    "url": "git+https://github.com/edelciomolina/figpowers.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/edelciomolina/figma-translator/issues"
+    "url": "https://github.com/edelciomolina/figpowers/issues"
   },
-  "homepage": "https://github.com/edelciomolina/figma-translator#readme",
+  "homepage": "https://github.com/edelciomolina/figpowers#readme",
   "devDependencies": {
+    "chrome-extension-deploy": "^3.0.0",
     "eslint": "^8.35.0",
-    "prettier": "2.8.4"
-  }
+    "prettier": "2.8.4",
+    "archiver": "^5.3.1"
+  },
+  "dependencies": {}
 }

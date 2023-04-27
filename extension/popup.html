@@ -1,10 +1,56 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8" /> 
-        <script src="popup.js"></script>
-    </head>
-    <body>
-        <button id="figma-login">Log in with Figma</button> 
-    </body>
+  <head>
+    <meta charset="utf-8" />
+    <link href="https://fonts.cdnfonts.com/css/inter" rel="stylesheet" />
+    <link href="popup.css" rel="stylesheet" />
+    <script src="popup.js"></script>
+  </head>
+  <body>
+    <div class="page loading">
+      <div class="lds-ellipsis">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+
+    <div class="page needlogin">
+      <div class="header">
+        <div class="logo"></div>
+      </div>
+      <div class="line"></div>
+      <div class="content">
+        <div class="left">
+          <div class="sloganForApps" i18n="sloganForApps"></div>
+          <div class="sloganMessage" i18n="sloganMessage"></div>
+        </div>
+        <div class="buttons">
+          <button class="button black figma-login">
+            <img src="assets/figma.png" />
+            <span i18n="logInWithFigma"></span>
+          </button>
+        </div>
+        <div class="signUpInstructions" i18n="signUpInstructionsLine1"></div>
+        <div class="signUpInstructions" i18n="signUpInstructionsLine2"></div>
+        <div class="signUpInstructions" i18n="signUpInstructionsLine3"></div>
+      </div>
+    </div>
+
+    <div class="page logged">
+      <div class="header">
+        <div class="logo"></div>
+      </div>
+      <div class="line"></div>
+      <div class="content">
+        <div class="user-photo"></div>
+        <div class="user-name"></div>
+        <div class="user-email"></div>
+        <div class="buttons">
+          <button class="button blue startYourTrial" i18n="startYourTrial"></button>
+          <button class="button red signOut" i18n="signOut"></button>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>

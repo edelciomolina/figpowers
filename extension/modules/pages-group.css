@@ -1,0 +1,122 @@
+.fgp_gpg_item {
+  z-index: 1;
+}
+
+.fgp_gpg_item #colorPick {
+  position: relative;
+  background-color: var(--color-icon, #333333);
+  margin-left: -138px;
+  margin-top: 15px;
+  line-height: 11px;
+  margin-bottom: 200px;
+  padding-right: 6px;
+  width: 130px;
+}
+
+.fgp_gpg_item #colorPick:before {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-right: 6px solid transparent;
+  border-left: 6px solid transparent;
+  border-bottom: 6px solid var(--color-icon, #333333);
+  border-top: 0;
+  content: '';
+  position: absolute;
+  top: -6px;
+  right: 8px;
+}
+
+.fgp_gpg_item #colorPick:after {
+  width: 150px;
+  height: 40px;
+  content: '';
+  position: absolute;
+  margin-left: 0px;
+  top: -40px;
+  right: 0px;
+}
+
+.fgp_gpg_item #colorPick .colorPickButton {
+  width: 15px;
+  height: 15px;
+  margin: 2px;
+  border-radius: 0px;
+  cursor: default;
+  border-color: transparent;
+}
+
+.fgp_gpg_item #colorPick .colorPickButton:last-child {
+  border-color: #8c8c8c;
+}
+
+.fgp_gpg_item #colorPick .colorPickButton:first-of-type:before {
+  position: absolute;
+  content: '|';
+  margin-top: px;
+  margin-left: 5px;
+  color: #bbbbbb;
+  font-size: 16px;
+  transform: rotate(45deg);
+}
+
+.fgp_gpg_group {
+  border-left: solid 5px;
+  top: 0px;
+}
+
+.fgp_gpg_sticky {
+  position: sticky;
+}
+
+.fgp_gpg_item .fgp_gpg_buttons {
+  flex-direction: row;
+  width: 22px;
+  height: 0px;
+  margin-right: 14px;
+  justify-content: space-between;
+  position: relative;
+  display: none;
+  float: right;
+  z-index: 1;
+}
+
+.fgp_gpg_item .fgp_gpg_buttons .fgp_gpg_color {
+  height: 32px;
+  width: 32px;
+  background-position: center;
+  background-size: 12px;
+  background-repeat: no-repeat;
+  background-image: url('chrome-extension://__MSG_@@extension_id__/assets/group-page-color.svg');
+}
+
+.fgp_gpg_item:not(:has(input)):hover .fgp_gpg_buttons {
+  display: flex;
+}
+
+.fgp_gpg_item.fgp_gpg_group .fgp_gpg_buttons {
+  margin-right: 40px;
+}
+
+.fgp_gpg_item.fgp_gpg_group [class*='pages_panel--pageRow']:before {
+  content: attr(data-before);
+  text-align: center;
+  width: 20px;
+  position: absolute;
+  right: 16px;
+  font-size: 10px;
+  font-weight: bold;
+  color: #00000050;
+}
+
+.fgp_gpg_group [class*="pages_panel--renameableNode"] {
+  margin-left: -2px;
+}
+
+.fgp_gpg_item.fgp_gpg_group span{
+  font-weight: 600; 
+}
+
+.fgp_gpg_item.fgp_gpg_group [class*='pages_panel--pageRow'] span {
+  background-color: initial !important;
+}

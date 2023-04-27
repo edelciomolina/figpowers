@@ -1,0 +1,14 @@
+.figpowers.home-buttom {
+  fill: #fff;
+  padding-left: 48px;
+  opacity: 1;
+  transition: opacity 0.3s;
+  background-image: url('chrome-extension://__MSG_@@extension_id__/assets/home-button.svg');
+  background-repeat: no-repeat;
+  background-size: 18px;
+  background-position: center;
+} 
+
+.figpowers.home-buttom:hover {
+  background-color: #000;
+}
