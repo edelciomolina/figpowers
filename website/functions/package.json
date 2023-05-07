@@ -4,6 +4,8 @@
     "lint": "eslint --ext .js,.ts .",
     "build": "tsc",
     "build:watch": "tsc --watch",
+    "vscode:debug": "npm run build:watch & npm run debug",
+    "debug": "npx kill-port 6000 && npx kill-port 7000 && firebase emulators:start --inspect-functions",
     "serve": "npm run build && firebase emulators:start --only functions",
     "shell": "npm run build && firebase functions:shell",
     "start": "npm run shell",
@@ -16,7 +18,7 @@
   "main": "dist/index.js",
   "dependencies": {
     "firebase-admin": "^11.5.0",
-    "firebase-functions": "^4.2.0"
+    "firebase-functions": "^4.3.1"
   },
   "devDependencies": {
     "@types/express": "^4.17.17",

@@ -18,6 +18,16 @@
   "database": {
     "rules": "database.rules.json"
   },
+  "emulators": {
+    "functions": {
+      "host": "localhost",
+      "port": "6000"
+    },
+    "database": {
+      "host": "localhost",
+      "port": "7000"
+    }
+  },
   "hosting": {
     "public": "public",
     "ignore": [
