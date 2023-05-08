@@ -10,9 +10,10 @@
     "outDir": "functions/dist",
     "sourceMap": true,
     "strict": true,
-    "target": "es2017"
+    "target": "es2017",
+    "resolveJsonModule": true
   },
   "compileOnSave": true,
-  "include": ["functions/src/**/*.ts"],
+  "include": ["functions/src/*.ts"],
   "exclude": ["node_modules"]
 }

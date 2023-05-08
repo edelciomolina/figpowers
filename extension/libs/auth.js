@@ -14,12 +14,9 @@ const Auth = {}
             localData.err = null
 
             if (!newLogin && localData.refresh_token) {
+                localData = await (await API.GetUserData(localData)).text()
                 authData = await Figma.Authenticate(localData)
-                if (!authData || authData.err) {
-                    localData = await API.GetUserData(localData)
-                    authData = await Figma.Authenticate(localData)
-                    if (!authData || authData.err) newUser = true
-                }
+                if (!authData || authData.err) newUser = true
             } else {
                 newUser = true
             }

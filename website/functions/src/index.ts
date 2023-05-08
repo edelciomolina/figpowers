@@ -1,7 +1,11 @@
+import * as dotenv from "dotenv"
+dotenv.config({ path: __dirname + "/../credentials.env" })
+
 import * as functions from "firebase-functions"
 import * as express from "express"
 import * as cors from "cors"
 import * as admin from "firebase-admin"
+import axios from "axios"
 
 admin.initializeApp()
 
@@ -14,6 +18,28 @@ const app = express()
 app.use(cors({ origin: true }))
 app.use("/api", apiRouter)
 
+const sendToServer = async (method: string, url: string, body: object) => {
+  const config = {
+    method,
+    maxBodyLength: Infinity,
+    timeout: 5000,
+    url,
+    headers: {
+      "Content-Type": "application/json",
+    },
+    data: JSON.stringify(body),
+  }
+
+  return await axios
+    .request(config)
+    .then((response) => {
+      return response.data
+    })
+    .catch((error) => {
+      return error.response.data.error
+    })
+}
+
 // INFO Endpoints NÃO seguros --------------------------------------------------
 
 apiRouter.get("/health", async (req: Request, res: Response) => {
@@ -21,7 +47,21 @@ apiRouter.get("/health", async (req: Request, res: Response) => {
   res.status(200).send(JSON.stringify(userData))
 })
 
-// INFO Endpoints seguros ------------------------------------------------------
+apiRouter.post("/auth", async (req: Request, res: Response) => {
+  const firebaseKey = process.env.FIREBASE_API
+  const firebaseLogin = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${firebaseKey}`
+
+  const bodyLogin = {
+    email: req.body.email,
+    password: req.body.access_token,
+    returnSecureToken: true,
+  }
+
+  const result = await sendToServer("POST", firebaseLogin, bodyLogin)
+  res.status(200).send(JSON.stringify(result))
+})
+
+// INFO Endpoints seguros --------------------------------------------------
 
 apiRouter.use(validateFirebaseIdToken)
 apiRouter.get("/", async (req: Request, res: Response) => {
@@ -40,7 +80,7 @@ apiRouter.get("/", async (req: Request, res: Response) => {
   res.status(200).send(JSON.stringify(users))
 })
 
-apiRouter.get("/:id", async (req: Request, res: Response) => {
+apiRouter.get("/user/:id", async (req: Request, res: Response) => {
   // const snapshot = await admin
   //   .firestore()
   //   .collection("users")
@@ -63,7 +103,7 @@ apiRouter.post("/", async (req: Request, res: Response) => {
   res.status(201).send()
 })
 
-apiRouter.put("/:id", async (req: Request, res: Response) => {
+apiRouter.put("/user/:id", async (req: Request, res: Response) => {
   // const body = req.body
 
   // await admin.firestore().collection("users").doc(req.params.id).update(body)
@@ -71,7 +111,7 @@ apiRouter.put("/:id", async (req: Request, res: Response) => {
   res.status(200).send()
 })
 
-apiRouter.delete("/:id", async (req: Request, res: Response) => {
+apiRouter.delete("/user/:id", async (req: Request, res: Response) => {
   // await admin.firestore().collection("users").doc(req.params.id).delete()
 
   res.status(200).send()
