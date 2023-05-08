@@ -14,14 +14,14 @@ const PagesGroup = {}
 
         const AddNewGroup = (pageItemFigma) => {
 
-            const pageItem = $(pageItemFigma).parents('.fgp_gpg_item')
+            const pageItem = $$(pageItemFigma).parents('.fgp_gpg_item')
 
             let initialColor = colorToHex(pageItem.css('border-color'))
             if (initialColor === '#000000e6') {
                 initialColor = '#FFFFFF'
             }
 
-            $(pageItemFigma).colorPick({
+            $$(pageItemFigma).colorPick({
                 initialColor,
                 paletteLabel: 'Group Color',
                 allowCustomColor: false,
@@ -61,7 +61,7 @@ const PagesGroup = {}
             elementosDiv.forEach(
                 div => {
 
-                    const pageItem = $(div)
+                    const pageItem = $$(div)
 
                     if (pageItem.hasClass('fgp_gpg_group')) {
 
@@ -144,11 +144,11 @@ const PagesGroup = {}
                     elementosDiv.forEach(
                         div => {
 
-                            const pageItem = $(div)
+                            const pageItem = $$(div)
 
                             pageItem.on('click', (event) => {
 
-                                var $element = $(this);
+                                var $element = $$(this);
                                 var elementOffset = $element.offset();
                                 var mouseX = event.pageX - elementOffset.left;
                                 var mouseY = event.pageY - elementOffset.top;
@@ -163,7 +163,7 @@ const PagesGroup = {}
                             div.insertAdjacentHTML('afterbegin', pagesGroupHtml)
 
                             //INFO cria evento para criação do novo grupo
-                            const buttonNew = $('.fgp_gpg_color', div);
+                            const buttonNew = $$('.fgp_gpg_color', div);
                             buttonNew.on('mousedown', (event) => AddNewGroup(event.target));
 
                         });
