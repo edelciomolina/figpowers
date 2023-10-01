@@ -62,12 +62,14 @@
         "libs/client-functions.js",
         "modules/pages-group.js",
         "modules/home-button.js",
+        "modules/project-fields.js",
         "modules/translation.js",
         "content.js"
       ],
       "css": [
         "vendor/colorPick.min.css",
         "modules/home-button.css",
+        "modules/project-fields.css",
         "modules/pages-group.css"
       ]
     }
