@@ -5,13 +5,6 @@ const PagesGroup = {}
 
         const MainSelector = '[class*=pages_panel] > [class*=scroll_container--full] > div > div'
 
-        // const MovingDone = (elem, idx) => {
-
-        //     if (!idx) return
-        //     ChangeCounter()
-
-        // }
-
         const AddNewGroup = (pageItemFigma) => {
 
             const pageItem = $$(pageItemFigma).parents('.fgp_gpg_item')
@@ -97,33 +90,8 @@ const PagesGroup = {}
                 mutations.forEach((mutation) => {
                     if (mutation.type === 'childList') {
 
-
                         ChangeCounter()
 
-                        // const elementMovedLast = mutation.removedNodes[0];
-                        // if (elementMovedLast) {
-                        //     const indexFoundLast = Array.from(pai.children).indexOf(elementMovedLast);
-
-                        //     elementMovedFirst = !elementMovedFirst ? elementMovedLast : elementMovedFirst
-                        //     indexFoundFirst = !indexFoundFirst ? indexFoundLast : indexFoundFirst
-
-                        //     setTimeout(() => {
-
-                        //         if (indexFoundLast != null || indexFoundFirst != null) {
-
-                        //             if (indexFoundFirst == indexFoundLast) {
-                        //                 MovingDone(elementMovedLast, indexFoundLast)
-                        //             } else {
-                        //                 MovingDone(elementMovedFirst, indexFoundFirst)
-                        //             }
-
-                        //             elementMovedFirst = null;
-                        //             indexFoundFirst = null;
-
-                        //         }
-
-                        //     }, 1000)
-                        // }
                     }
                 });
             });

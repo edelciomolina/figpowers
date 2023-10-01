@@ -14,8 +14,7 @@ const HomeButton = {}
                 const buttonFetch = await fetch(chrome.runtime.getURL("modules/home-button.html"));
                 const buttonHtml = await buttonFetch.text();
 
-                const insertElem = document.querySelector('[class*=toolbar_view--toolbar]');
-                insertElem.insertAdjacentHTML('afterbegin', buttonHtml);
+                homeToolbar[0].insertAdjacentHTML('afterbegin', buttonHtml);
 
             }
 
