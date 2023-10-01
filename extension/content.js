@@ -4,7 +4,15 @@ const waitForElm = (selector) => {
 
         const waitForElmInterval = setInterval(() => {
 
+            console.log(`[FigPowers] Waiting for "${selector}"`)
+
             if ($$(selector).length > 0) {
+
+                clearTimeout(window.waitForElmTimeout)
+                window.waitForElmTimeout = setTimeout(() => {
+                    console.log(`[FigPowers] Found! "${selector}"`)
+                }, 1000)
+
                 clearInterval(waitForElmInterval)
                 resolve(document.querySelector(selector))
             }
@@ -33,6 +41,7 @@ $$(document).ready(function () {
 const loadFeatures = () => {
 
     HomeButton.Create()
+    ProjectFields.Create()
     PagesGroup.Create()
 
 }
